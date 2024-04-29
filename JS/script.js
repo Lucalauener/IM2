@@ -14,20 +14,12 @@ searchBock.addEventListener('input', function(){
 });
 
 async function sucheArtwork(searchInput){
-  console.log(searchInput);
-  let url = 'https://api.artic.edu/api/v1/artworks/search?q=&query[term][artist_id]=40610&limit=18';
-  let artworks = await fetchData(url);
-  let filteredArtworks = artworks.data.filter(artwork => artwork.title.includes(searchInput));
-  console.log(filteredArtworks);
+  let filteredArtworks = artworksWithDetails.data.filter(artworksWithDetails => artworksWithDetails.title.includes(searchInput));
 
   app.innerHTML = '';
 
   filteredArtworks.forEach(artwork => {
-      console.log(artwork.name);
-      let card = document.createElement('div');
-      card.className = 'Artworks';
-      card.innerHTML = `<h3>${artwork.title}</h3>`;
-      app.appendChild(card);
+    createCard(artwork);
   });
 }
 
@@ -48,22 +40,17 @@ async function fetchData(url) { // async function to fetch data from the url
 async function init(){
   let url = 'https://api.artic.edu/api/v1/artworks/search?q=&query[term][artist_id]=40610&limit=18';
   let artworks = await fetchData(url);
-  artworks.data.forEach(async artwork => {
-      console.log(artwork.title);
-
- artworksWithDetails = await Promise.all(artworks.data.map(async artwork => {
+  
+  artworksWithDetails = await Promise.all(artworks.data.map(async artwork => {
   let artworkDetails = await fetchData(`https://api.artic.edu/api/v1/artworks/${artwork.id}`);
   return artworkDetails.data;
   } ));
-
-  console.log(artworksWithDetails);
 
   artworksWithDetails.forEach(artwork => {  
     createCard(artwork);
 
       } );
-      });
-  } 
+      };
 
 
 
@@ -74,22 +61,32 @@ function createCard(artwork){
 
   let cardtitel = document.createElement('div');
   cardtitel.className = 'cardtitel';
+
   let carddescription = document.createElement('div');
   carddescription.className = 'carddescription';
 
-
+  let img = document.createElement('img');
+  img.className = 'GalleryImage';
+  img.src = `https://www.artic.edu/iiif/2/${artwork.image_id}/full/843,/0/default.jpg`; 
+  
   let artworkname = document.createElement('h3');
       artworkname.innerHTML = artwork.title;   
       cardtitel.appendChild(artworkname);
 
       let beschreibung = document.createElement('p');
-      if (artwork.description.length === 0) {
+
+      if (!artwork.description) {
         beschreibung.innerHTML = artwork.thumbnail.alt_text;
       } else {
         beschreibung.innerHTML = artwork.description;
       }
       carddescription.appendChild(beschreibung);
+
+
+
   card.appendChild(cardtitel);
+  card.appendChild(img);
   card.appendChild(carddescription);
+  
   app.appendChild(card);
 }
