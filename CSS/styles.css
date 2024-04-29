@@ -1,0 +1,79 @@
+
+#app {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* von links nach rechts ordnene statt mitte frei */
+}
+
+#app > div {
+  flex: 1 0 25%;
+}
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  display: none;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+  position: relative;
+  max-width: 90%; /* grösse limiteire */
+  max-height: 90vh; /* Grösse limiteiren */
+  overflow-y: auto;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 24px;
+}
+.GalleryImage {
+  max-width: 100%; /* Ensure the image is not wider than the modal */
+  max-height: 50vh; /* Limit the image height to be no more than 50% of the viewport height */
+  display: block; /* Removes bottom space/gap under the image */
+}
+
+.cardDescription p, .infos p {
+  margin: 10px 0;
+  word-wrap: break-word; /* Ensures that the text breaks to avoid horizontal overflow */
+}
+
+.cardTitle h3 {
+  font-size: 1.5em; 
+  word-break: break-word; 
+}
+
+#app .Artworks {
+  flex: 1 0 30%; /* Flex-grow, Flex-shrink and Flex-basis */
+  max-width: 30%;
+  margin: 10px;
+  padding: 15px;
+  background-color: #f9f9f9; 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+  flex: 1 0 25%;
+}
+
+#app .preview {
+  flex: 1 0 (25% - 20px);; /* Flex-grow, Flex-shrink and Flex-basis */
+  max-width: 25% (25% - 20px);
+  margin: 10px;
+  padding: 15px;
+  background-color: #f9f9f9; 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+}
