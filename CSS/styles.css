@@ -1,4 +1,14 @@
 
+body {
+  background-image: url(../img/vangoghwallpaper.jpeg);
+}
+h1 {
+  font-weight: 600; /* Semi-bold weight */
+  margin: 0; /* Remove default margin */
+  letter-spacing: 1.2px; /* Slightly spaced out letters */
+  margin: 20px 0; /* Top and bottom margin */
+}
+
 #app {
   display: flex;
   flex-wrap: wrap;
@@ -77,3 +87,27 @@
   background-color: #f9f9f9; 
   box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
 }
+#app .preview:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transform: scale(1.02);
+ 
+}
+
+input[type="text"] {
+  margin: 10px; /* Spacing above and below the search bar */
+  width: 300px; /* Fixed width for the search bar */
+  padding: 10px 15px; /* Padding for comfortable typing space */
+  font-size: 16px; /* Adequate font size for readability */
+  border: none; /* No border for a clean look */ /* Rounded corners for a modern look */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+  outline: none; /* Remove the default focus outline */
+  transition: all 0.3s ease; /* Smooth transition for interactions */
+  background-color: #f9f9f9;
+}
+
+input[type="text"]:hover,
+input[type="text"]:focus {
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* Slightly more pronounced shadow */
+    transform: scale(1.02); /* Slight increase in size */
+}
+
