@@ -2,7 +2,7 @@ const searchBock = document.querySelector('#search');
 const app = document.querySelector('#app');
 let artworksWithDetails = [];
 
-
+2
 document.addEventListener('DOMContentLoaded', function(){
   init();
 });
@@ -88,9 +88,9 @@ function createCard(artwork){
       let beschreibung = document.createElement('p');
 
       if (!artwork.description) {
-        beschreibung.innerHTML = artwork.thumbnail.alt_text;
+        beschreibung.innerHTML = `<span class="label">Description:</span> ${artwork.thumbnail.alt_text}`;
       } else {
-        beschreibung.innerHTML = artwork.description;
+        beschreibung.innerHTML = `<span class="label">Description:</span> ${artwork.description}`;
       }
       carddescription.appendChild(beschreibung);
 
@@ -99,21 +99,22 @@ function createCard(artwork){
 
 
   let mediumofdisplay = document.createElement('p');
-  mediumofdisplay.innerHTML = `Medium of Display: ${artwork.date_display}`;
+  mediumofdisplay.innerHTML = `<span class="label">Medium of Display:</span> ${artwork.medium_display}`;
   infos.appendChild(mediumofdisplay);
 
   let dateorigin = document.createElement('p');
-  dateorigin.innerHTML = `Date of origin: ${artwork.date_display}`;
+  dateorigin.innerHTML = `<span class="label">Date of origin:</span> ${artwork.date_display}`;
   infos.appendChild(dateorigin);
 
   let größe = document.createElement('p');
-  größe.innerHTML = `Measurment: ${artwork.dimensions}`;
+  größe.innerHTML = `<span class="label">Measurment:</span> ${artwork.dimensions}`;
   infos.appendChild(größe);
 
   card.appendChild(cardtitel);
   card.appendChild(img);
-  card.appendChild(carddescription);
   card.appendChild(infos);
+  card.appendChild(carddescription);
+  
   app.appendChild(card);
   return card;
     }
@@ -133,6 +134,7 @@ function createPreview(artwork){
   img.addEventListener('click', function(){
     showOverlay(artwork);
   } );
+
 preview.appendChild(img);
 
   let previewtitel = document.createElement('div');

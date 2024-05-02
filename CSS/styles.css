@@ -1,12 +1,28 @@
 
 body {
+  margin: 0;
   background-image: url(../img/vangoghwallpaper.jpeg);
+  font-size: 18px; /* base size font */
 }
+main {
+  padding: 10px; /* Center the content */
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  height: 30vh;
+  background-color: rgba(249, 249, 249, 0.798);
+}
+
 h1 {
-  font-weight: 600; /* Semi-bold weight */
+  font-size: 12vh ; /* Semi-bold weight */
   margin: 0; /* Remove default margin */
   letter-spacing: 1.2px; /* Slightly spaced out letters */
   margin: 20px 0; /* Top and bottom margin */
+  color: rgb(22, 59, 64);
 }
 
 #app {
@@ -41,7 +57,7 @@ h1 {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 1001;
   position: relative;
-  max-width: 90%; /* grösse limiteire */
+  max-width: 70%; /* grösse limiteire */
   max-height: 90vh; /* Grösse limiteiren */
   overflow-y: auto;
 }
@@ -55,7 +71,7 @@ h1 {
 }
 .GalleryImage {
   max-width: 100%; /* Ensure the image is not wider than the modal */
-  max-height: 50vh; /* Limit the image height to be no more than 50% of the viewport height */
+  max-height: 60vh; /* Limit the image height to be no more than 50% of the viewport height */
   display: block; /* Removes bottom space/gap under the image */
 }
 
@@ -64,8 +80,14 @@ h1 {
   word-wrap: break-word; /* Ensures that the text breaks to avoid horizontal overflow */
 }
 
+.carddescription p {
+  margin-top: 5px;
+}
+.infos {
+  margin: 20px 0;
+}
 .cardTitle h3 {
-  font-size: 1.5em; 
+  font-size: 2.5em; /* Large font size for the title */
   word-break: break-word; 
 }
 
@@ -77,19 +99,32 @@ h1 {
   background-color: #f9f9f9; 
   box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
   flex: 1 0 25%;
+  
 }
 
 #app .preview {
+  display: flex;
   flex: 1 0 (25% - 20px);; /* Flex-grow, Flex-shrink and Flex-basis */
   max-width: 25% (25% - 20px);
   margin: 10px;
   padding: 15px;
-  background-color: #f9f9f9; 
+  background-color: rgba(249, 249, 249, 0.9); 
   box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+  border-radius: 2px;
+}
+#app .preview .previewtitel {
+  padding: 10px;
+  font-weight: bold;
+  
+}
+.label {
+  font-weight: bold;
+  word-break: break-word; 
 }
 #app .preview:hover {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transform: scale(1.02);
+  border-radius: 4px;
  
 }
 
@@ -103,11 +138,90 @@ input[type="text"] {
   outline: none; /* Remove the default focus outline */
   transition: all 0.3s ease; /* Smooth transition for interactions */
   background-color: #f9f9f9;
+  border-radius: 2px;
 }
 
 input[type="text"]:hover,
 input[type="text"]:focus {
     box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* Slightly more pronounced shadow */
     transform: scale(1.02); /* Slight increase in size */
+    border-radius: 4px;
 }
 
+
+
+
+/* Mobile devices */
+@media (max-width: 480px) {
+  #app .Artworks, #app .preview {
+    flex: 1 0 auto;
+    max-width: 100%;
+  }
+  #app .Artworks img, #app .preview img {
+    width: 80%;
+    height: auto;
+  }
+  input[type="text"] {
+    font-size: 0.875em; 
+  }
+}
+
+/* iPads, Tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+  #app .Artworks, #app .preview {
+    flex: 1 0 auto;
+    max-width: 50%;
+  }
+  #app .Artworks img, #app .preview img {
+    width: 90%;
+    height: auto;
+  }
+  input[type="text"] {
+    font-size: 1em; 
+  }
+}
+
+/* Small screens, laptops */
+@media (min-width: 769px) and (max-width: 1440px) {
+  #app .Artworks, #app .preview {
+    flex: 1 0 auto;
+    max-width: 33.33%;
+  }
+  #app .Artworks img, #app .preview img {
+    width: 100%;
+    height: auto;
+  }
+  input[type="text"] {
+    font-size: 1.125em; 
+  }
+}
+
+/* Desktops, large screens */
+@media (min-width: 1440px) and (max-width: 1640px) {
+  #app .Artworks, #app .preview {
+    flex: 1 0 auto;
+    max-width: 25%;
+  }
+  #app .Artworks img, #app .preview img {
+    width: 100%;
+    height: auto;
+  }
+  input[type="text"] {
+    font-size: 1.25em; 
+  }
+}
+
+/* Extra large screens, TV */
+@media (min-width: 1640px) {
+  #app .Artworks, #app .preview {
+    flex: 1 0 auto;
+    max-width: 20%;
+  }
+  #app .Artworks img, #app .preview img {
+    width: 100%;
+    height: auto;
+  }
+  input[type="text"] {
+    font-size: 1.375em; 
+  }
+}
