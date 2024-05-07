@@ -1,3 +1,7 @@
+html, html * {
+  box-sizing: border-box;
+}
+
 
 body {
   margin: 0;
@@ -6,6 +10,8 @@ body {
 }
 main {
   padding: 10px; /* Center the content */
+  max-width: 1800px;
+  margin: auto;
 }
 
 header {
@@ -13,16 +19,64 @@ header {
   align-items: center;
   justify-content: center;
   padding: 20px;
-  height: 30vh;
+  height: 300px;
   background-color: rgba(249, 249, 249, 0.798);
+  width: 100%;
 }
 
 h1 {
-  font-size: 12vh ; /* Semi-bold weight */
-  margin: 0; /* Remove default margin */
-  letter-spacing: 1.2px; /* Slightly spaced out letters */
-  margin: 20px 0; /* Top and bottom margin */
+  font-size: 7em;
+  margin: 0; 
+  letter-spacing: 1.2px; 
+  margin: 20px 0; 
   color: rgb(22, 59, 64);
+}
+
+.inputs {
+  background-color: #fff;
+  margin: 10px;
+  padding: 10px; 
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+  border-radius: 8px; 
+  width: 500px; 
+}
+
+.inputs h4{
+  color: rgb(17, 48, 52); 
+}
+
+.actualinputs {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.inputs input[type="number"] {
+  width: 200px; 
+  padding: 8px 12px; 
+  margin-right: 10px; 
+  border: 1px solid #bdc3c7; 
+  border-radius: 4px; 
+  background-color: #ecf0f1; 
+}
+.height, .width {
+  flex-basis: 48%; /* Each takes roughly half the width */
+  display: flex;
+  align-items: center;
+}
+
+.inputs p {
+  font-size: 16px; 
+  font-weight: 500; 
+  padding-right: 10px;
+}
+
+.height {
+  display: flex;
+}
+.width {
+  display: flex;
 }
 
 #app {
@@ -31,9 +85,9 @@ h1 {
   justify-content: flex-start; /* von links nach rechts ordnene statt mitte frei */
 }
 
-#app > div {
+/* #app > div {
   flex: 1 0 25%;
-}
+} */
 
 
 .overlay {
@@ -51,7 +105,7 @@ h1 {
 }
 
 .modal {
-  background: white;
+  background: rgb(240, 254, 255);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -69,10 +123,17 @@ h1 {
   cursor: pointer;
   font-size: 24px;
 }
+
+.modal .cardtitel h3 {
+  font-size: 2em; 
+  margin: 10px 0;
+  color: rgb(17, 48, 52);
+}
+
 .GalleryImage {
-  max-width: 100%; /* Ensure the image is not wider than the modal */
-  max-height: 60vh; /* Limit the image height to be no more than 50% of the viewport height */
-  display: block; /* Removes bottom space/gap under the image */
+  max-width: 100%; /* image < modal */
+  max-height: 60vh; 
+  display: block; 
 }
 
 .cardDescription p, .infos p {
@@ -86,13 +147,13 @@ h1 {
 .infos {
   margin: 20px 0;
 }
-.cardTitle h3 {
-  font-size: 2.5em; /* Large font size for the title */
+.cardtitel .h3 {
+  font-size: 200px; 
   word-break: break-word; 
 }
 
 #app .Artworks {
-  flex: 1 0 30%; /* Flex-grow, Flex-shrink and Flex-basis */
+  flex: 1 0 30%; /* Flex-grow, Flex-shrink und Flex-basis */
   max-width: 30%;
   margin: 10px;
   padding: 15px;
@@ -104,7 +165,7 @@ h1 {
 
 #app .preview {
   display: flex;
-  flex: 1 0 (25% - 20px);; /* Flex-grow, Flex-shrink and Flex-basis */
+  flex: 1 0 (25% - 20px) ; 
   max-width: 25% (25% - 20px);
   margin: 10px;
   padding: 15px;
@@ -112,9 +173,11 @@ h1 {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
   border-radius: 2px;
 }
+
 #app .preview .previewtitel {
   padding: 10px;
   font-weight: bold;
+  color: rgb(17, 48, 52);
   
 }
 .label {
@@ -129,99 +192,125 @@ h1 {
 }
 
 input[type="text"] {
-  margin: 10px; /* Spacing above and below the search bar */
-  width: 300px; /* Fixed width for the search bar */
-  padding: 10px 15px; /* Padding for comfortable typing space */
-  font-size: 16px; /* Adequate font size for readability */
-  border: none; /* No border for a clean look */ /* Rounded corners for a modern look */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth */
-  outline: none; /* Remove the default focus outline */
-  transition: all 0.3s ease; /* Smooth transition for interactions */
+  margin: 10px; 
+  width: 300px; 
+  padding: 10px 15px; 
+  font-size: 16px; 
+  border: none; 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+  outline: none; 
+  transition: all 0.3s ease; 
   background-color: #f9f9f9;
   border-radius: 2px;
 }
 
+
 input[type="text"]:hover,
 input[type="text"]:focus {
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* Slightly more pronounced shadow */
-    transform: scale(1.02); /* Slight increase in size */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15); 
+    transform: scale(1.02); 
     border-radius: 4px;
 }
 
 
 
+#app .Artworks, #app .preview {
+  flex: 1 0 auto; 
+  max-width: 100%;
+}
 
-/* Mobile devices */
+
 @media (max-width: 480px) {
   #app .Artworks, #app .preview {
-    flex: 1 0 auto;
-    max-width: 100%;
+    box-sizing: border-box;
+    width: calc(100% - 20px);
   }
-  #app .Artworks img, #app .preview img {
-    width: 80%;
-    height: auto;
-  }
+
   input[type="text"] {
-    font-size: 0.875em; 
+    width: calc(100% - 20px);
+   
+  }
+  .inputs {
+    width: calc(100% - 20px);
+  }
+
+  h1 {
+    font-size: 2.5em;
+  }
+  .modal .cardtitel h3 {
+    font-size: 1.5em; 
+    margin: 10px 0;
   }
 }
 
-/* iPads, Tablets */
+
+
 @media (min-width: 481px) and (max-width: 768px) {
   #app .Artworks, #app .preview {
-    flex: 1 0 auto;
-    max-width: 50%;
-  }
-  #app .Artworks img, #app .preview img {
-    width: 90%;
-    height: auto;
+    box-sizing: border-box;
+    width: calc(100% - 20px);
+  
   }
   input[type="text"] {
-    font-size: 1em; 
+    width: calc(100% - 20px);
+    
+  }
+  .inputs {
+    width: calc(100% - 20px);
+  }
+  h1 {
+    font-size: 3.8em;
+  }
+  .modal .cardtitel h3 {
+    font-size: 1.75em; 
+    margin: 10px 0;
   }
 }
 
-/* Small screens, laptops */
-@media (min-width: 769px) and (max-width: 1440px) {
+@media (min-width: 769px) and (max-width: 1250px) {
   #app .Artworks, #app .preview {
-    flex: 1 0 auto;
-    max-width: 33.33%;
+    box-sizing: border-box;
+    width: 40%;
   }
-  #app .Artworks img, #app .preview img {
-    width: 100%;
-    height: auto;
+  h1 {
+    font-size: 6em;
+
   }
-  input[type="text"] {
-    font-size: 1.125em; 
+  .modal .cardtitel h3 {
+    font-size: 2.25em; 
+    margin: 10px 0;
   }
 }
 
-/* Desktops, large screens */
-@media (min-width: 1440px) and (max-width: 1640px) {
+
+
+@media (min-width: 1250px) and (max-width: 1640px) {
   #app .Artworks, #app .preview {
-    flex: 1 0 auto;
-    max-width: 25%;
+    box-sizing: border-box;
+    width: 30%;
   }
-  #app .Artworks img, #app .preview img {
-    width: 100%;
-    height: auto;
+  h1 {
+    font-size: 8em;
   }
-  input[type="text"] {
-    font-size: 1.25em; 
+  .modal .cardtitel h3 {
+    font-size: 2.5em; 
+    margin: 10px 0;
+  }
+  .GalleryImage {
+    max-width: 100%; 
+    max-height: 65vh; 
+  
   }
 }
 
-/* Extra large screens, TV */
+
+
 @media (min-width: 1640px) {
   #app .Artworks, #app .preview {
-    flex: 1 0 auto;
-    max-width: 20%;
+    box-sizing: border-box;
+    width: 20%;
   }
-  #app .Artworks img, #app .preview img {
-    width: 100%;
-    height: auto;
+  h1 {
+    font-size: 10em;
   }
-  input[type="text"] {
-    font-size: 1.375em; 
-  }
-}
+}  

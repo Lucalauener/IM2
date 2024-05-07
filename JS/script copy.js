@@ -1,56 +1,9 @@
 const searchBock = document.querySelector('#search');
 const app = document.querySelector('#app');
 let artworksWithDetails = [];
-const searchHeight = document.querySelector('#height');
-const searchWidth = document.querySelector('#width');
-
-searchWidth.addEventListener('keyup', function(){
-  if (event.key === 'Enter') {
-    suchePassendeBilder();
-  }
 
 
-});
-
-
-async function suchePassendeBilder(){
-  app.innerHTML = '';
-
-  if (searchHeight.value.trim() === '' || searchWidth.value.trim() === '') {
-    artworksWithDetails.forEach(artwork => {
-      createPreview(artwork);
-    });
-
-  } else {
-    let searchWidthValue = parseFloat(searchWidth.value);
-    let searchHeightValue = parseFloat(searchHeight.value);
-
-    let PassendeBilder = artworksWithDetails.filter(artwork => {
-      if (artwork.dimensions_detail && artwork.dimensions_detail[0]) {
-        let artworkWidth = parseFloat(artwork.dimensions_detail[0].width);
-        let artworkHeight = parseFloat(artwork.dimensions_detail[0].height);
-      
-        return artworkWidth < searchWidthValue && artworkHeight < searchHeightValue;
-      } else {
-        return false;
-      }
-      
-    });
-
-    if (PassendeBilder.length === 0) {
-      artworksWithDetails.forEach(artwork => {
-        createPreview(artwork);
-        showOverlay(null, 'There is no Picture fitting your Frame.');
-      });
-    } else {
-      PassendeBilder.forEach(artwork => {
-        let card = createCard(artwork);
-        app.appendChild(card);
-      });
-
-  }
-}
-}
+2
 document.addEventListener('DOMContentLoaded', function(){
   init();
 });
@@ -83,6 +36,7 @@ async function sucheArtwork(searchInput){
  
 }
 }
+
 init();
 
 async function fetchData(url) { // async function to fetch data from the url
@@ -199,7 +153,7 @@ app.appendChild(preview);
 
 }
 
-function showOverlay(artwork, message) {
+function showOverlay(artwork) {
   let overlay = document.getElementById('overlay');
   overlay.innerHTML = ''; // Clear previous content
 
@@ -216,20 +170,9 @@ function showOverlay(artwork, message) {
   modal.appendChild(closeButton);
 
 
-  if (artwork) {
-    let karte = createCard(artwork);
-    modal.appendChild(karte);
-  } else if (message) {
-    let messageElement = document.createElement('p');
-    messageElement.textContent = message;
-    modal.appendChild(messageElement);
-  }
-  
-
+  let karte = createCard(artwork);
+  modal.appendChild(karte);
   overlay.appendChild(modal);
   overlay.style.display = 'flex'; 
 
 }
-
-
-
