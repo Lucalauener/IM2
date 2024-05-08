@@ -17,8 +17,6 @@ function fitTextToHeader() {
     let newFontSize = currentFontSize * (desiredWidth / currentWidth); 
 
     h1.style.fontSize = `${newFontSize - 50}px`; 
-
-    
     
     let h1Height = h1.scrollHeight; 
     header.style.height = `${h1Height - 10}px`;

@@ -267,7 +267,7 @@ input[type="text"]:focus {
 }
 
 #app .Artworks, #app .preview {
-  flex: 1 0 auto; 
+  flex: 0 0 auto; 
   max-width: 100%;
 }
 
@@ -376,12 +376,10 @@ input[type="text"] {
   }
 }
 
-
-
 @media (min-width: 1640px) {
   #app .Artworks, #app .preview {
     box-sizing: border-box;
-    width: 20%;
+    width: calc(25% - 20px);
   }
 
 
@@ -408,6 +406,5 @@ input[type="text"] {
     font-size: 1.1em;
 
   }
-
   
 }
