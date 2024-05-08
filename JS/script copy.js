@@ -3,7 +3,6 @@ const app = document.querySelector('#app');
 let artworksWithDetails = [];
 
 
-2
 document.addEventListener('DOMContentLoaded', function(){
   init();
 });

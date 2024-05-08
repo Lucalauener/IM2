@@ -1,15 +1,19 @@
 const searchBock = document.querySelector('#search');
 const app = document.querySelector('#app');
-let artworksWithDetails = [];
 const searchHeight = document.querySelector('#height');
 const searchWidth = document.querySelector('#width');
+let artworksWithDetails = [];
 
 searchWidth.addEventListener('keyup', function(){
   if (event.key === 'Enter') {
     suchePassendeBilder();
   }
+});
 
-
+searchHeight.addEventListener('keyup', function(){
+  if (event.key === 'Enter') {
+    suchePassendeBilder();
+  }
 });
 
 
@@ -51,10 +55,10 @@ async function suchePassendeBilder(){
   }
 }
 }
+
 document.addEventListener('DOMContentLoaded', function(){
   init();
 });
-
 
 //eventlistener searchBocks input ??????????????
 searchBock.addEventListener('input', function(){  
@@ -113,8 +117,6 @@ async function init(){
       } );
  };
 
-
-
 function createCard(artwork){
 
   let card = document.createElement('div');
@@ -167,7 +169,6 @@ function createCard(artwork){
   app.appendChild(card);
   return card;
     }
-
 
 function createPreview(artwork){
 

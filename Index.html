@@ -4,11 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/styles.css"> 
+    
+
+    <link rel="stylesheet" href="https://use.typekit.net/crg2akk.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
     <header> 
-        <h1>Van Gogh API</h1>
+        <h1>VAN GOGH</h1>
     
     </header>
 
@@ -18,16 +25,16 @@
       <main>
         <input type="text" id="search" placeholder="Search for an Artpiece of Van Gogh">
     
-        <div class="inputs">  
-        <h4>What is your Framesize</h4>
-        <div class="actualinput">
-            <div class="height">
-                <p>Height:</p> <input type="number" id="height" placeholder="Height in cm">
+        <div class="inputs">
+            <h4 id="framesize">Filter by your Framesize</h4> 
+            <div class="actualinput" id="SizeInputs" style="display: none;"> 
+                <div class="height">
+                    <p>Height:</p> <input type="number" id="height" placeholder="Height in cm">
+                </div>
+                <div class="width">
+                    <p>Width:&nbsp;</p> <input type="number" id="width" placeholder="Width in cm">
+                </div>
             </div>
-            <div class="width">
-                <p>Width:</p> <input type="number" id="width" placeholder="Width in cm">
-            </div>
-        </div>
         </div>
     
         <div id = "app" >
@@ -36,4 +43,5 @@
     
 </body>
 <script src="JS/script.js"></script>
+<script src="JS/scriptStyles.js"></script>
 </html>
