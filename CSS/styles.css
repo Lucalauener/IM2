@@ -313,9 +313,10 @@ footer a.footer-link {
   padding: 10px 20px;
 }
 
+
 footer a.footer-link:hover {
-  color: #3498DB; /* Light blue on hover for interactivity */
-  border-color: #3498DB; /* Light blue on hover for interactivity */
+  color: #b3ced8; 
+  border-color: #b3ced8;
 }
 
 @media (max-width: 480px) {
@@ -368,6 +369,10 @@ input[type="text"] {
 .modal .Artworks {
   font-size: 0.7em;
 
+}
+
+.footer-content{
+  font-size: 0.5em;
 }
 }
 
