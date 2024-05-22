@@ -60,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function(){
   init();
 });
 
+
 //eventlistener searchBocks input ??????????????
 searchBock.addEventListener('input', function(){  
   sucheArtwork(searchBock.value);
@@ -202,7 +203,9 @@ app.appendChild(preview);
 
 function showOverlay(artwork, message) {
   let overlay = document.getElementById('overlay');
-  overlay.innerHTML = ''; // Clear previous content
+  let overlayContent = overlay.querySelector('.overlay-content');
+  overlayContent.innerHTML = ''; // Clear previous content
+
 
   let modal = document.createElement('div');
   modal.className = 'modal';
@@ -212,7 +215,7 @@ function showOverlay(artwork, message) {
   closeButton.innerHTML = '&times;';
   closeButton.className = 'modal-close';
   closeButton.onclick = function() {
-    overlay.style.display = 'none';
+    closeOverlay(); 
   };
   modal.appendChild(closeButton);
 
@@ -227,10 +230,25 @@ function showOverlay(artwork, message) {
   }
   
 
-  overlay.appendChild(modal);
-  overlay.style.display = 'flex'; 
+  overlayContent.appendChild(modal);
+  openOverlay(); 
+
 
 }
 
+function openOverlay() {
+  document.querySelector('.overlay').classList.add('open');
+}
+
+function closeOverlay() {
+  document.querySelector('.overlay').classList.remove('open');
+}
+
+
+document.querySelector('.overlay').addEventListener('click', function(event) {
+  if (event.target.matches('.overlay-background')) {
+    closeOverlay();
+  }
+});
 
 
