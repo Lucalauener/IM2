@@ -370,6 +370,9 @@ footer a.footer-link:hover {
   border-color: #b3ced8;
 }
 
+#loadMoreButton {
+  display: none;
+}
 
 
 
@@ -434,6 +437,10 @@ footer div a.footer-link {
 
 
 }
+#loadMoreButton {
+  display: block;
+}
+
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
@@ -454,6 +461,11 @@ footer div a.footer-link {
     font-size: 1.75em; 
     margin: 10px 0;
   }
+  
+#loadMoreButton {
+      display: block;
+    }
+
 
 }
 

@@ -3,6 +3,7 @@ const app = document.querySelector('#app');
 const searchHeight = document.querySelector('#height');
 const searchWidth = document.querySelector('#width');
 let artworksWithDetails = [];
+let currentPreviewCount = 5;
 
 searchWidth.addEventListener('keyup', function(){
   if (event.key === 'Enter') {
@@ -88,7 +89,6 @@ async function sucheArtwork(searchInput){
  
 }
 }
-init();
 
 async function fetchData(url) { // async function to fetch data from the url
   try { // try block to handle exceptions
@@ -112,10 +112,14 @@ async function init(){
   } ));
 
 
-  artworksWithDetails.forEach(artwork => {  
-    createPreview(artwork);
-
-      } );
+  artworksWithDetails.forEach((artwork, index) => {  
+    let preview = createPreview(artwork);
+    if (window.innerWidth <= 768 && index < 4) {
+      preview.style.display = 'block'; // Show the first 5 previews on small screens
+    } else if (window.innerWidth > 768) {
+      preview.style.display = 'flex'; // Show all previews on larger screens
+    }
+  } );
  };
 
 function createCard(artwork){
@@ -175,6 +179,7 @@ function createPreview(artwork){
 
   let preview = document.createElement('div');
   preview.className = 'preview';
+  preview.style.display = 'none';
   preview.addEventListener('click', function(){
     showOverlay(artwork);
   } );
@@ -199,7 +204,21 @@ preview.appendChild(img);
 
 app.appendChild(preview);
 
+return preview;
+
 }
+
+function showMorePreviews() {
+  let previews = document.querySelectorAll('.preview');
+  for (let i = currentPreviewCount; i < currentPreviewCount + 5 && i < previews.length; i++) {
+    previews[i].style.display = 'block';
+  }
+  currentPreviewCount += 5;
+  if (currentPreviewCount >= previews.length) {
+    document.querySelector('#loadMoreButton').style.display = 'none'; // Hide the button if all previews are shown
+  }
+}
+document.querySelector('#loadMoreButton').addEventListener('click', showMorePreviews);
 
 function showOverlay(artwork, message) {
   let overlay = document.getElementById('overlay');

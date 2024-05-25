@@ -1,6 +1,7 @@
 const searchBock = document.querySelector('#search');
 const app = document.querySelector('#app');
 let artworksWithDetails = [];
+let currentPreviewCount = 5;
 
 
 document.addEventListener('DOMContentLoaded', function(){
@@ -62,8 +63,14 @@ async function init(){
 
   artworksWithDetails.forEach(artwork => {  
     createPreview(artwork);
-
+    if (window.innerWidth <= 768 && index < 5) {
+      preview.style.display = 'block'; // Show the first 5 previews on small screens
+    } else if (window.innerWidth > 768) {
+      preview.style.display = 'block'; // Show all previews on larger screens
+    }
       } );
+
+    
  };
 
 
@@ -126,6 +133,7 @@ function createPreview(artwork){
 
   let preview = document.createElement('div');
   preview.className = 'preview';
+  preview.style.display = 'none';
   preview.addEventListener('click', function(){
     showOverlay(artwork);
   } );
@@ -150,7 +158,21 @@ preview.appendChild(img);
 
 app.appendChild(preview);
 
+return preview;
 }
+
+function showMorePreviews() {
+  let previews = document.querySelectorAll('.preview');
+  for (let i = currentPreviewCount; i < currentPreviewCount + 5 && i < previews.length; i++) {
+    previews[i].style.display = 'block';
+  }
+  currentPreviewCount += 5;
+  if (currentPreviewCount >= previews.length) {
+    document.querySelector('#loadMoreButton').style.display = 'none'; // Hide the button if all previews are shown
+  }
+}
+
+document.querySelector('#loadMoreButton').addEventListener('click', showMorePreviews);
 
 function showOverlay(artwork) {
   let overlay = document.getElementById('overlay');
@@ -175,3 +197,4 @@ function showOverlay(artwork) {
   overlay.style.display = 'flex'; 
 
 }
+
