@@ -71,10 +71,9 @@ async function sucheArtwork(searchInput){
   app.innerHTML = '';
 
   if (searchInput.trim() === '') {
-    artworksWithDetails.forEach(artwork => {
-      createPreview(artwork);
-    });
+   init();
 
+    
   } else {
     // Osonst filtern mit lowercase
     let filteredArtworks = artworksWithDetails.filter(artwork => 
@@ -115,12 +114,15 @@ async function init(){
   artworksWithDetails.forEach((artwork, index) => {  
     let preview = createPreview(artwork);
     if (window.innerWidth <= 768 && index < 4) {
-      preview.style.display = 'block'; // Show the first 5 previews on small screens
+      preview.style.display = 'flex'; // Show the first 5 previews on small screens
     } else if (window.innerWidth > 768) {
       preview.style.display = 'flex'; // Show all previews on larger screens
     }
   } );
  };
+
+
+ 
 
 function createCard(artwork){
 
@@ -211,8 +213,9 @@ return preview;
 function showMorePreviews() {
   let previews = document.querySelectorAll('.preview');
   for (let i = currentPreviewCount; i < currentPreviewCount + 5 && i < previews.length; i++) {
-    previews[i].style.display = 'block';
+    previews[i].style.display = 'flex';
   }
+  
   currentPreviewCount += 5;
   if (currentPreviewCount >= previews.length) {
     document.querySelector('#loadMoreButton').style.display = 'none'; // Hide the button if all previews are shown
